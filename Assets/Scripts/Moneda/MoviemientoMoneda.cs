@@ -11,6 +11,7 @@ public class MovimientoMoneda : MonoBehaviour
     private Vector3 direccionActual;
     private float tiempoParaCambio = 2f;
     private float tiempoTranscurrido = 0f;
+    [SerializeField] private Marcador marcador;
 
     void Start()
     {
@@ -27,7 +28,6 @@ public class MovimientoMoneda : MonoBehaviour
         if (tiempoTranscurrido >= tiempoParaCambio)
         {
             direccionActual = movimientoMoneda();
-            direccionActual.y = 0f;
             tiempoTranscurrido = 0f;
         }
 
@@ -38,7 +38,11 @@ public class MovimientoMoneda : MonoBehaviour
     {
         if (collision.collider.tag.Equals("Player"))
         {
+
+            marcador.sumarMonedas();
+            marcador.escudoJugador();
             Destroy(gameObject);
+           
         }
         else
         {
