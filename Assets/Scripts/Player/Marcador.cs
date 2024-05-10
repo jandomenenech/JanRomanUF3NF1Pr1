@@ -8,8 +8,10 @@ public class Marcador : MonoBehaviour
     [SerializeField] private TextMeshProUGUI contadorMonedas;
     [SerializeField] private TextMeshProUGUI contadorEnemigos;
     [SerializeField] private TextMeshProUGUI escudo;
-    private int contadorM;
-    private int contadorE;
+    public int contadorM;
+    public int contadorE;
+    [SerializeField] private GameOver gameOver;
+    [SerializeField] private GameObject marcador;
 
 
     void Start()
@@ -18,13 +20,15 @@ public class Marcador : MonoBehaviour
         contadorE = 0;
         contadorMonedas.text = "Contador Monedas: " + contadorM;
         contadorEnemigos.text = "Contador Enemigos: " + contadorE;
+        gameOver.añadirALaLista(marcador);
+        
     }
 
     // Update is called once per frame
     void Update()
     {
-        
-       
+        escudoJugador();
+
     }
 
     public void sumarMonedas()
